@@ -25,9 +25,9 @@ logPath = os.path.abspath(os.path.join(logpath, 'index.log')).replace("\\", "\\\
 fileConfig(configPath, defaults={'logfilename': logPath})
 log = logging.getLogger("SonarrPostConversion")
 
-if os.environ.get("Sonarr_EventType") == "Test":
+if os.environ.get("sonarr_eventtype") == "Test":
     log.info("Sonarr script test detected")
-    return 0
+    sys.exit(0)
 
 log.info("Sonarr extra script post processing started.")
 
