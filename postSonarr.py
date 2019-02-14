@@ -25,6 +25,10 @@ logPath = os.path.abspath(os.path.join(logpath, 'index.log')).replace("\\", "\\\
 fileConfig(configPath, defaults={'logfilename': logPath})
 log = logging.getLogger("SonarrPostConversion")
 
+if os.environ.get("Sonarr_EventType") == "Test":
+    log.info("Sonarr script test detected")
+    return 0
+
 log.info("Sonarr extra script post processing started.")
 
 settings = ReadSettings(os.path.dirname(sys.argv[0]), "autoProcess.ini")
